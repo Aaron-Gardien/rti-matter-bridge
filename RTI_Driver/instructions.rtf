@@ -1,0 +1,66 @@
+{\rtf1\ansi\deff0 {\fonttbl {\f0 Times New Roman;}}
+\f0\fs24
+
+{\b RTI HomeKit Bridge Driver}
+
+This driver connects to your RTI system via WebSocket and discovers system variables that can be used for HomeKit integration.
+
+{\b Setup Instructions:}
+
+1. {\b Configure RTI Server Settings:}
+   - Set the RTI Server Address to your RTI system IP (default: 192.168.102.232)
+   - Set the RTI Server Port to the WebSocket port (default: 1234)
+   - Verify the WebSocket Endpoint is correct (default: /diagnosticswss)
+
+2. {\b Configure Variable Discovery:}
+   - Set the Start Variable ID and End Variable ID range to scan
+   - Adjust the Discovery Timeout as needed (default: 3 seconds)
+   - Enable Auto Discover Variables to automatically scan on startup
+
+3. {\b Using the Driver:}
+   - The driver will automatically connect to your RTI system
+   - Use "Discover Variables" to scan for available system variables
+   - View discovered variables in the "Discovered Variables" category
+   - Use "Export Variable Mapping" to get a JSON mapping of variables
+
+{\b Functions Available:}
+
+{\b Connection Control:}
+- Connect: Manually connect to RTI system
+- Disconnect: Disconnect from RTI system
+- Reconnect: Reconnect to RTI system
+
+{\b Variable Discovery:}
+- Discover Variables: Scan for system variables
+- Refresh All Variables: Re-subscribe to all discovered variables
+- Clear Discovered Variables: Clear the discovered variable list
+
+{\b Variable Control:}
+- Subscribe to Variable: Subscribe to a specific variable ID
+- Unsubscribe from Variable: Unsubscribe from a specific variable ID
+- Test Variable Range: Test the configured variable range
+
+{\b HomeKit Integration:}
+- Start HomeKit Bridge: Start the HomeKit bridge (requires Python script)
+- Stop HomeKit Bridge: Stop the HomeKit bridge
+- Export Variable Mapping: Export variable mapping for HomeKit integration
+
+{\b Debug Functions:}
+- Show Connection Status: Display connection information
+- Show Discovered Variables: List all discovered variables
+- Show WebSocket Log: Display WebSocket message statistics
+
+{\b Troubleshooting:}
+
+- If connection fails, check the RTI server address and port
+- Enable debug trace to see detailed logging
+- Use "Show Connection Status" to verify connection
+- Check "Last WebSocket Message" for recent activity
+
+{\b HomeKit Integration:}
+
+Once variables are discovered, use the exported mapping with the Python HomeKit bridge script to create HomeKit accessories for your RTI devices.
+
+}
+
+

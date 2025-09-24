@@ -1,0 +1,305 @@
+{
+  "host": "192.168.102.232",
+  "scan_time": "2025-09-21T17:18:52.430418",
+  "open_ports": [
+    {
+      "port": 80,
+      "status": "open",
+      "service": "HTTP"
+    },
+    {
+      "port": 1234,
+      "status": "open",
+      "service": "RTI System"
+    },
+    {
+      "port": 5000,
+      "status": "open",
+      "service": "Web Server"
+    }
+  ],
+  "http_endpoints": [
+    {
+      "url": "http://192.168.102.232:80/diagnostics",
+      "status_code": 200,
+      "content_type": "text/html",
+      "content_length": 1154,
+      "response_preview": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1.5,user...",
+      "success": true
+    },
+    {
+      "url": "http://192.168.102.232:5000/",
+      "status_code": 200,
+      "content_type": "text/html",
+      "content_length": 1154,
+      "response_preview": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1.5,user...",
+      "success": true
+    },
+    {
+      "url": "http://192.168.102.232:5000/diagnostics",
+      "status_code": 404,
+      "content_type": "text/html",
+      "content_length": 90,
+      "response_preview": "<html><head><title>File not found</title></head><body>diagnostics not found.</body></html>",
+      "success": true
+    }
+  ],
+  "websocket_endpoints": [],
+  "failed_connections": [
+    {
+      "url": "http://192.168.102.232:80/",
+      "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:80/api",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=80): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:80/status",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=80): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:80/info",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=80): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:80/health",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=80): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:80/admin",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=80): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:80/config",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=80): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:80/system",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=80): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/diagnostics",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/api",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/status",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/info",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/health",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/admin",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/config",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:1234/system",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=1234): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:5000/api",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=5000): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:5000/status",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=5000): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:5000/info",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=5000): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:5000/health",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=5000): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:5000/admin",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=5000): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:5000/config",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=5000): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "url": "http://192.168.102.232:5000/system",
+      "error": "HTTPConnectionPool(host='192.168.102.232', port=5000): Read timed out. (read timeout=5)",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/diagnostics",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/diagnosticswss",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/ws",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/websocket",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/socket.io/",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/api/ws",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/realtime",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/live",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/stream",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/diagnostics",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/diagnosticswss",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/ws",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/websocket",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/socket.io/",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/api/ws",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/realtime",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/live",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/stream",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/diagnostics",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/diagnosticswss",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/ws",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/websocket",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/socket.io/",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/api/ws",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/realtime",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/live",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/stream",
+      "error": "BaseEventLoop.create_connection() got an unexpected keyword argument 'timeout'",
+      "success": false
+    }
+  ]
+}

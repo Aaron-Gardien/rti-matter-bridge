@@ -1,0 +1,318 @@
+#!/usr/bin/env python3
+"""
+RTI Matterbridge Integration Script
+Handles communication between RTI driver and Matterbridge
+"""
+
+import asyncio
+import json
+import logging
+import websockets
+import requests
+from datetime import datetime
+from typing import Dict, Any, Optional
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class RTIMatterbridgeIntegration:
+    def __init__(self, rti_host: str = "192.168.102.232", rti_port: int = 1234,
+                 matterbridge_url: str = "http://localhost:4242"):
+        self.rti_host = rti_host
+        self.rti_port = rti_port
+        self.matterbridge_url = matterbridge_url
+        self.rti_websocket = None
+        self.matter_devices = {}
+        self.rti_variables = {}
+        self.macro_mappings = {}
+        
+    async def connect_rti(self):
+        """Connect to RTI WebSocket"""
+        try:
+            uri = f"ws://{self.rti_host}:{self.rti_port}/diagnosticswss"
+            self.rti_websocket = await websockets.connect(uri)
+            logger.info(f"Connected to RTI WebSocket: {uri}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to connect to RTI: {e}")
+            return False
+    
+    async def disconnect_rti(self):
+        """Disconnect from RTI WebSocket"""
+        if self.rti_websocket:
+            await self.rti_websocket.close()
+            logger.info("Disconnected from RTI WebSocket")
+    
+    async def subscribe_rti_variable(self, variable_id: int):
+        """Subscribe to an RTI variable"""
+        if not self.rti_websocket:
+            logger.error("Not connected to RTI WebSocket")
+            return False
+        
+        message = {
+            "type": "Subscribe",
+            "resource": "Sysvar",
+            "value": {"id": variable_id, "status": True}
+        }
+        
+        try:
+            await self.rti_websocket.send(json.dumps(message))
+            logger.info(f"Subscribed to RTI variable {variable_id}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to subscribe to variable {variable_id}: {e}")
+            return False
+    
+    async def unsubscribe_rti_variable(self, variable_id: int):
+        """Unsubscribe from an RTI variable"""
+        if not self.rti_websocket:
+            return False
+        
+        message = {
+            "type": "Subscribe",
+            "resource": "Sysvar",
+            "value": {"id": variable_id, "status": False}
+        }
+        
+        try:
+            await self.rti_websocket.send(json.dumps(message))
+            logger.info(f"Unsubscribed from RTI variable {variable_id}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to unsubscribe from variable {variable_id}: {e}")
+            return False
+    
+    async def listen_rti_messages(self):
+        """Listen for RTI WebSocket messages"""
+        if not self.rti_websocket:
+            logger.error("Not connected to RTI WebSocket")
+            return
+        
+        try:
+            async for message in self.rti_websocket:
+                await self.handle_rti_message(message)
+        except websockets.exceptions.ConnectionClosed:
+            logger.warning("RTI WebSocket connection closed")
+        except Exception as e:
+            logger.error(f"Error listening to RTI messages: {e}")
+    
+    async def handle_rti_message(self, message: str):
+        """Handle incoming RTI WebSocket message"""
+        try:
+            data = json.loads(message)
+            logger.debug(f"RTI Message: {data}")
+            
+            if data.get("messageType") == "Sysvar":
+                variable_id = data.get("sysvarid")
+                variable_value = data.get("sysvarval")
+                
+                # Update RTI variables
+                self.rti_variables[variable_id] = {
+                    "id": variable_id,
+                    "value": variable_value,
+                    "timestamp": datetime.now().isoformat()
+                }
+                
+                # Send to Matterbridge
+                await self.send_to_matterbridge("rti_variable_update", {
+                    "variable_id": variable_id,
+                    "value": variable_value,
+                    "timestamp": datetime.now().isoformat()
+                })
+                
+                logger.info(f"RTI Variable Update: {variable_id} = {variable_value}")
+                
+        except json.JSONDecodeError:
+            logger.error(f"Failed to parse RTI message: {message}")
+        except Exception as e:
+            logger.error(f"Error handling RTI message: {e}")
+    
+    async def send_to_matterbridge(self, message_type: str, data: Dict[str, Any]):
+        """Send message to Matterbridge"""
+        try:
+            message = {
+                "type": message_type,
+                "data": data,
+                "timestamp": datetime.now().isoformat()
+            }
+            
+            # Send via HTTP POST to Matterbridge API
+            response = requests.post(
+                f"{self.matterbridge_url}/api/message",
+                json=message,
+                timeout=5
+            )
+            
+            if response.status_code == 200:
+                logger.debug(f"Sent to Matterbridge: {message_type}")
+            else:
+                logger.error(f"Matterbridge API error: {response.status_code}")
+                
+        except Exception as e:
+            logger.error(f"Failed to send to Matterbridge: {e}")
+    
+    async def get_matterbridge_messages(self):
+        """Get messages from Matterbridge"""
+        try:
+            response = requests.get(
+                f"{self.matterbridge_url}/api/messages",
+                timeout=5
+            )
+            
+            if response.status_code == 200:
+                messages = response.json()
+                for message in messages:
+                    await self.handle_matterbridge_message(message)
+                    
+        except Exception as e:
+            logger.error(f"Failed to get Matterbridge messages: {e}")
+    
+    async def handle_matterbridge_message(self, message: Dict[str, Any]):
+        """Handle message from Matterbridge"""
+        try:
+            message_type = message.get("type")
+            data = message.get("data", {})
+            
+            if message_type == "matter_device_command":
+                await self.handle_matter_device_command(data)
+            elif message_type == "matter_device_update":
+                await self.handle_matter_device_update(data)
+                
+        except Exception as e:
+            logger.error(f"Error handling Matterbridge message: {e}")
+    
+    async def handle_matter_device_command(self, data: Dict[str, Any]):
+        """Handle Matter device command"""
+        device_id = data.get("device_id")
+        command = data.get("command")
+        parameters = data.get("parameters", {})
+        
+        logger.info(f"Matter Device Command: {device_id} - {command}")
+        
+        # Map to RTI macro
+        rti_macro = self.map_matter_command_to_rti_macro(device_id, command, parameters)
+        if rti_macro:
+            await self.execute_rti_macro(rti_macro)
+    
+    async def handle_matter_device_update(self, data: Dict[str, Any]):
+        """Handle Matter device update"""
+        device_id = data.get("device_id")
+        device_type = data.get("device_type")
+        state = data.get("state", {})
+        
+        self.matter_devices[device_id] = {
+            "id": device_id,
+            "type": device_type,
+            "state": state,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+        logger.info(f"Matter Device Update: {device_id} ({device_type})")
+    
+    def map_matter_command_to_rti_macro(self, device_id: str, command: str, parameters: Dict[str, Any]) -> Optional[str]:
+        """Map Matter device command to RTI macro"""
+        # This is where you define your macro mappings
+        # Customize based on your specific RTI setup
+        
+        device = self.matter_devices.get(device_id, {})
+        device_type = device.get("type", "unknown")
+        
+        macro = None
+        
+        if device_type == "light":
+            if command == "turn_on":
+                macro = f"Light_{device_id}_On"
+            elif command == "turn_off":
+                macro = f"Light_{device_id}_Off"
+            elif command == "set_brightness":
+                brightness = parameters.get("brightness", 100)
+                macro = f"Light_{device_id}_Brightness_{brightness}"
+                
+        elif device_type == "switch":
+            if command == "turn_on":
+                macro = f"Switch_{device_id}_On"
+            elif command == "turn_off":
+                macro = f"Switch_{device_id}_Off"
+                
+        elif device_type == "thermostat":
+            if command == "set_temperature":
+                temperature = parameters.get("temperature", 72)
+                macro = f"Thermostat_{device_id}_SetTemp_{temperature}"
+        
+        return macro
+    
+    async def execute_rti_macro(self, macro_name: str):
+        """Execute RTI macro"""
+        logger.info(f"Executing RTI Macro: {macro_name}")
+        
+        # Store macro execution
+        self.macro_mappings[macro_name] = {
+            "name": macro_name,
+            "executed": True,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+        # Send to Matterbridge
+        await self.send_to_matterbridge("rti_macro_executed", {
+            "macro_name": macro_name,
+            "timestamp": datetime.now().isoformat()
+        })
+    
+    async def discover_rti_variables(self, start_id: int = 1, end_id: int = 50):
+        """Discover RTI variables - RTI will send all variables on boot"""
+        logger.info("Waiting for RTI boot variables...")
+        logger.info("RTI will automatically send all variables when it boots up")
+        
+        # Just wait and listen - RTI will send all variables automatically
+        await asyncio.sleep(10)  # Give RTI time to send initial data
+        
+        logger.info(f"Received {len(self.rti_variables)} variables from RTI boot")
+        for var_id, var_data in self.rti_variables.items():
+            logger.info(f"  Variable {var_id}: {var_data['value']}")
+    
+    def get_status(self) -> Dict[str, Any]:
+        """Get integration status"""
+        return {
+            "rti_connected": self.rti_websocket is not None,
+            "rti_variables": len(self.rti_variables),
+            "matter_devices": len(self.matter_devices),
+            "macro_mappings": len(self.macro_mappings),
+            "timestamp": datetime.now().isoformat()
+        }
+    
+    async def run(self):
+        """Main integration loop"""
+        logger.info("Starting RTI Matterbridge Integration")
+        
+        # Connect to RTI
+        if not await self.connect_rti():
+            logger.error("Failed to connect to RTI, exiting")
+            return
+        
+        try:
+            # Start listening to RTI messages
+            rti_task = asyncio.create_task(self.listen_rti_messages())
+            
+            # Start getting Matterbridge messages
+            matterbridge_task = asyncio.create_task(self.get_matterbridge_messages())
+            
+            # Discover variables
+            await self.discover_rti_variables()
+            
+            # Keep running
+            await asyncio.gather(rti_task, matterbridge_task)
+            
+        except KeyboardInterrupt:
+            logger.info("Shutting down...")
+        finally:
+            await self.disconnect_rti()
+
+async def main():
+    """Main function"""
+    integration = RTIMatterbridgeIntegration()
+    await integration.run()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+

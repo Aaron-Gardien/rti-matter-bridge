@@ -1,0 +1,59 @@
+[general]
+RemoteNickFormat="[{PROTOCOL}] <{NICK}> "
+
+# RTI to Matterbridge integration
+[api]
+# Enable the API for RTI driver communication
+[api.rti]
+BindAddress="0.0.0.0:4242"
+Buffer=10000
+Timeout=60
+RemoteNickFormat="[{PROTOCOL}] <{NICK}> "
+ShowJoinPart=false
+
+# Matter bridge configuration
+[matter]
+# Matter bridge server settings
+[matter.matter]
+Server="localhost:5540"
+Number="+1234567890"
+Password="your_matter_password"
+RemoteNickFormat="[{PROTOCOL}] <{NICK}> "
+ShowJoinPart=false
+Debug=true
+
+# Bridge between RTI API and Matter
+[[gateway]]
+name="rti-matter"
+enable=true
+
+# RTI API gateway
+[[gateway.inout]]
+account="api.rti"
+channel="rti-matter"
+
+# Matter gateway
+[[gateway.inout]]
+account="matter.matter"
+channel="general"
+
+# Message routing
+[gateway.inout.message]
+# Route RTI variable updates to Matter
+[[gateway.inout.message]]
+regex=".*variable_update.*"
+replace="RTI Variable Update: ${1}"
+destination="matter.matter"
+
+# Route RTI macro executions to Matter
+[[gateway.inout.message]]
+regex=".*macro_executed.*"
+replace="RTI Macro Executed: ${1}"
+destination="matter.matter"
+
+# Route Matter device commands to RTI
+[[gateway.inout.message]]
+regex=".*matter_device_command.*"
+replace="Matter Command: ${1}"
+destination="api.rti"
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<driverManifest>
+	<driver
+		id="{RTI-HOMEKIT-BRIDGE-2024-001}"
+    	name="RTI HomeKit Bridge"
+    	author="RTI HomeKit Integration"
+    	copyright="Copyright 2024"
+    	deviceManufacturer="RTI"
+    	deviceModel="HomeKit Bridge"
+    	driverVersion="1.0"
+		minimumSoftwareVersion="9.9"
+		minimumRuntimeVersion="23"
+		processorType="XP-8"
+		configSettingsStream="ConfigSettings.xml"
+		systemVariablesStream="SystemVariables.xml"
+		systemFunctionsStream="SystemFunctions.xml"
+		helpTextStream="instructions.rtf"
+		>
+		<processorScript stream="main.js" />
+
+		<package>
+			<include filename="ConfigSettings.xml"/>
+			<include filename="DriverManifest.xml"/>
+			<include filename="instructions.rtf"/>
+			<include filename="main.js"/>
+			<include filename="SystemVariables.xml"/>
+			<include filename="SystemFunctions.xml"/>
+
+			<description>
+				RTI HomeKit Bridge Driver - Discovers and controls RTI system variables via WebSocket for HomeKit integration.
+			</description>
+		</package>
+	</driver>
+</driverManifest>
+
+

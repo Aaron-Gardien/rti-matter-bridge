@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<variables>
+	<category name="Connection State">
+		<variable name="Connection State" sysvar="ConnectionState" type="integer" sample="0" format="L:0:Disconnected:1:Connected"/>
+		<variable name="Disconnected" sysvar="ConnectionState00" type="boolean" sample="false" format="B:Off:On"/>
+		<variable name="Connected" sysvar="ConnectionState01" type="boolean" sample="true" format="B:Off:On"/>
+	</category>
+	
+	<category name="System Information">
+		<variable name="RTI Server Address" sysvar="RTIServerAddress" type="string" sample="192.168.102.232"/>
+		<variable name="Variables Discovered" sysvar="VariablesDiscovered" type="integer" sample="0"/>
+		<variable name="Last Discovery Time" sysvar="LastDiscoveryTime" type="string" sample="2024-01-01 12:00:00"/>
+		<variable name="Matter Devices Connected" sysvar="MatterDevicesConnected" type="integer" sample="0"/>
+	</category>
+	
+	<category name="Discovered Variables">
+		<!-- These will be populated dynamically by the driver -->
+		<variable name="Variable 1" sysvar="DiscoveredVar001" type="string" sample="null"/>
+		<variable name="Variable 2" sysvar="DiscoveredVar002" type="string" sample="null"/>
+		<variable name="Variable 3" sysvar="DiscoveredVar003" type="string" sample="null"/>
+		<variable name="Variable 4" sysvar="DiscoveredVar004" type="string" sample="null"/>
+		<variable name="Variable 5" sysvar="DiscoveredVar005" type="string" sample="null"/>
+		<variable name="Variable 6" sysvar="DiscoveredVar006" type="string" sample="null"/>
+		<variable name="Variable 7" sysvar="DiscoveredVar007" type="string" sample="null"/>
+		<variable name="Variable 8" sysvar="DiscoveredVar008" type="string" sample="null"/>
+		<variable name="Variable 9" sysvar="DiscoveredVar009" type="string" sample="null"/>
+		<variable name="Variable 10" sysvar="DiscoveredVar010" type="string" sample="null"/>
+		<variable name="Variable 11" sysvar="DiscoveredVar011" type="string" sample="null"/>
+		<variable name="Variable 12" sysvar="DiscoveredVar012" type="string" sample="null"/>
+		<variable name="Variable 13" sysvar="DiscoveredVar013" type="string" sample="null"/>
+		<variable name="Variable 14" sysvar="DiscoveredVar014" type="string" sample="null"/>
+		<variable name="Variable 15" sysvar="DiscoveredVar015" type="string" sample="null"/>
+		<variable name="Variable 16" sysvar="DiscoveredVar016" type="string" sample="null"/>
+		<variable name="Variable 951" sysvar="DiscoveredVar951" type="boolean" sample="true" format="B:Off:On"/>
+		<variable name="Variable 966" sysvar="DiscoveredVar966" type="string" sample="19:21"/>
+	</category>
+	
+	<category name="Matter Devices">
+		<!-- These will be populated dynamically by the driver -->
+		<variable name="Matter Device 1" sysvar="MatterDevice001" type="string" sample="{}"/>
+		<variable name="Matter Device 2" sysvar="MatterDevice002" type="string" sample="{}"/>
+		<variable name="Matter Device 3" sysvar="MatterDevice003" type="string" sample="{}"/>
+		<variable name="Matter Device 4" sysvar="MatterDevice004" type="string" sample="{}"/>
+		<variable name="Matter Device 5" sysvar="MatterDevice005" type="string" sample="{}"/>
+	</category>
+	
+	<category name="RTI Macros">
+		<!-- These will be populated dynamically by the driver -->
+		<variable name="RTI Macro 1" sysvar="RTIMacro001" type="string" sample=""/>
+		<variable name="RTI Macro 2" sysvar="RTIMacro002" type="string" sample=""/>
+		<variable name="RTI Macro 3" sysvar="RTIMacro003" type="string" sample=""/>
+		<variable name="RTI Macro 4" sysvar="RTIMacro004" type="string" sample=""/>
+		<variable name="RTI Macro 5" sysvar="RTIMacro005" type="string" sample=""/>
+	</category>
+	
+	<category name="Debug Information">
+		<variable name="Last WebSocket Message" sysvar="LastWebSocketMessage" type="string" sample="Connection established"/>
+		<variable name="Messages Received" sysvar="MessagesReceived" type="integer" sample="0"/>
+		<variable name="Subscriptions Active" sysvar="SubscriptionsActive" type="integer" sample="0"/>
+	</category>
+</variables>
+

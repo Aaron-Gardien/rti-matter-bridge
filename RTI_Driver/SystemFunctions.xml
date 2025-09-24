@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<functions>
+	<category name="Connection Control">
+		<function name="Connect" export="Connect" repeatrate="0">
+		</function>
+		<function name="Disconnect" export="Disconnect" repeatrate="0">
+		</function>
+		<function name="Reconnect" export="Reconnect" repeatrate="0">
+		</function>
+	</category>
+	
+	<category name="Variable Discovery">
+		<function name="Discover Variables" export="DiscoverVariables" repeatrate="0">
+		</function>
+		<function name="Refresh All Variables" export="RefreshAllVariables" repeatrate="0">
+		</function>
+		<function name="Clear Discovered Variables" export="ClearDiscoveredVariables" repeatrate="0">
+		</function>
+	</category>
+	
+	<category name="Variable Control">
+		<function name="Subscribe to Variable" export="SubscribeToVariable" repeatrate="0">
+		</function>
+		<function name="Unsubscribe from Variable" export="UnsubscribeFromVariable" repeatrate="0">
+		</function>
+		<function name="Test Variable Range" export="TestVariableRange" repeatrate="0">
+		</function>
+	</category>
+	
+	<category name="Matterbridge Integration">
+		<function name="Start Matterbridge Integration" export="StartMatterbridgeIntegration" repeatrate="0">
+		</function>
+		<function name="Stop Matterbridge Integration" export="StopMatterbridgeIntegration" repeatrate="0">
+		</function>
+		<function name="Show Matter Devices" export="ShowMatterDevices" repeatrate="0">
+		</function>
+		<function name="Export Variable Mapping" export="ExportVariableMapping" repeatrate="0">
+		</function>
+	</category>
+	
+	<category name="HomeKit Integration">
+		<function name="Start HomeKit Bridge" export="StartHomeKitBridge" repeatrate="0">
+		</function>
+		<function name="Stop HomeKit Bridge" export="StopHomeKitBridge" repeatrate="0">
+		</function>
+	</category>
+	
+	<category name="Debug Functions">
+		<function name="Show Connection Status" export="ShowConnectionStatus" repeatrate="0">
+		</function>
+		<function name="Show Discovered Variables" export="ShowDiscoveredVariables" repeatrate="0">
+		</function>
+		<function name="Show WebSocket Log" export="ShowWebSocketLog" repeatrate="0">
+		</function>
+	</category>
+</functions>
+

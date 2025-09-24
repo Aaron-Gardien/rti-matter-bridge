@@ -1,0 +1,92 @@
+{
+  "rti_server": {
+    "host": "192.168.102.232",
+    "port": 80,
+    "websocket_endpoints": [
+      "/diagnostics",
+      "/ws", 
+      "/socket.io/"
+    ]
+  },
+  "homekit": {
+    "bridge_name": "RTI Bridge",
+    "port": 51826,
+    "setup_code": "123-45-678"
+  },
+  "variables": [
+    {
+      "id": 966,
+      "name": "Current Time",
+      "type": "time",
+      "homekit_type": "sensor",
+      "description": "Current system time in HH:MM format"
+    }
+  ],
+  "discovered_variables": [
+    {
+      "id": 0,
+      "name": "Unknown Variable 0",
+      "type": "unknown",
+      "homekit_type": "switch",
+      "description": "Discovered from JavaScript analysis"
+    },
+    {
+      "id": 1,
+      "name": "Unknown Variable 1", 
+      "type": "unknown",
+      "homekit_type": "switch",
+      "description": "Discovered from JavaScript analysis"
+    },
+    {
+      "id": 2,
+      "name": "Unknown Variable 2",
+      "type": "unknown", 
+      "homekit_type": "switch",
+      "description": "Discovered from JavaScript analysis"
+    },
+    {
+      "id": 3,
+      "name": "Unknown Variable 3",
+      "type": "unknown",
+      "homekit_type": "switch", 
+      "description": "Discovered from JavaScript analysis"
+    },
+    {
+      "id": 5,
+      "name": "Unknown Variable 5",
+      "type": "unknown",
+      "homekit_type": "switch",
+      "description": "Discovered from JavaScript analysis"
+    },
+    {
+      "id": 6,
+      "name": "Unknown Variable 6",
+      "type": "unknown",
+      "homekit_type": "switch",
+      "description": "Discovered from JavaScript analysis"
+    },
+    {
+      "id": 7,
+      "name": "Unknown Variable 7",
+      "type": "unknown",
+      "homekit_type": "switch",
+      "description": "Discovered from JavaScript analysis"
+    },
+    {
+      "id": 8,
+      "name": "Unknown Variable 8",
+      "type": "unknown",
+      "homekit_type": "switch",
+      "description": "Discovered from JavaScript analysis"
+    },
+    {
+      "id": 9,
+      "name": "Unknown Variable 9",
+      "type": "unknown",
+      "homekit_type": "switch",
+      "description": "Discovered from JavaScript analysis"
+    }
+  ]
+}
+
+

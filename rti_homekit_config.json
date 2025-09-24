@@ -1,0 +1,142 @@
+{
+  "rti_server": {
+    "host": "192.168.102.232",
+    "port": 1234,
+    "websocket_endpoint": "ws://192.168.102.232:1234/diagnosticswss"
+  },
+  "homekit": {
+    "bridge_name": "RTI Bridge",
+    "port": 51826,
+    "setup_code": "123-45-678"
+  },
+  "variables": [
+    {
+      "id": 2,
+      "name": "Variable 2",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 2",
+      "current_value": "null"
+    },
+    {
+      "id": 3,
+      "name": "Variable 3",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 3",
+      "current_value": "null"
+    },
+    {
+      "id": 4,
+      "name": "Variable 4",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 4",
+      "current_value": "null"
+    },
+    {
+      "id": 5,
+      "name": "Variable 5",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 5",
+      "current_value": "null"
+    },
+    {
+      "id": 6,
+      "name": "Variable 6",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 6",
+      "current_value": "null"
+    },
+    {
+      "id": 7,
+      "name": "Variable 7",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 7",
+      "current_value": "null"
+    },
+    {
+      "id": 8,
+      "name": "Variable 8",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 8",
+      "current_value": "null"
+    },
+    {
+      "id": 9,
+      "name": "Variable 9",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 9",
+      "current_value": "null"
+    },
+    {
+      "id": 10,
+      "name": "Variable 10",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 10",
+      "current_value": "null"
+    },
+    {
+      "id": 11,
+      "name": "Variable 11",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 11",
+      "current_value": "null"
+    },
+    {
+      "id": 12,
+      "name": "Variable 12",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 12",
+      "current_value": "null"
+    },
+    {
+      "id": 13,
+      "name": "Variable 13",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 13",
+      "current_value": "null"
+    },
+    {
+      "id": 14,
+      "name": "Variable 14",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 14",
+      "current_value": "null"
+    },
+    {
+      "id": 15,
+      "name": "Variable 15",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 15",
+      "current_value": "null"
+    },
+    {
+      "id": 16,
+      "name": "Variable 16",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 16",
+      "current_value": "null"
+    },
+    {
+      "id": 17,
+      "name": "Variable 17",
+      "type": "sensor",
+      "homekit_type": "sensor",
+      "description": "RTI Variable 17",
+      "current_value": "null"
+    }
+  ]
+}

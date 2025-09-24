@@ -1,0 +1,99 @@
+{
+  "host": "192.168.102.232",
+  "test_time": "2025-09-21T17:21:42.221672",
+  "working_websockets": [
+    {
+      "uri": "ws://192.168.102.232:1234/diagnosticswss",
+      "status": "connected_with_response",
+      "response": "{\"messageType\":\"echo\",\"message\":\"Welcome to the RTI Diagnostics Websocket server!\"}",
+      "success": true
+    }
+  ],
+  "failed_websockets": [
+    {
+      "uri": "ws://192.168.102.232:80/diagnosticswss",
+      "error": "timed out during opening handshake",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/diagnostics",
+      "error": "server rejected WebSocket connection: HTTP 200",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/ws",
+      "error": "timed out during opening handshake",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:80/websocket",
+      "error": "timed out during opening handshake",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/ws",
+      "error": "timed out during opening handshake",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:1234/websocket",
+      "error": "timed out during opening handshake",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/ws",
+      "error": "timed out during opening handshake",
+      "success": false
+    },
+    {
+      "uri": "ws://192.168.102.232:5000/websocket",
+      "error": "timed out during opening handshake",
+      "success": false
+    }
+  ],
+  "http_responses": [
+    {
+      "url": "http://192.168.102.232:80/diagnostics",
+      "status_code": 200,
+      "headers": {
+        "Server": "HTTP Server",
+        "Content-Type": "text/html",
+        "Cache-Control": "No-Cache",
+        "Content-Length": "1154"
+      },
+      "content_type": "text/html",
+      "content_length": 1154,
+      "content_preview": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1.5,user-scalable=1\"><link rel=\"icon\" href=\"/diagnostics/favicon.ico\"><title>XP Diagnostics</title><link href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" rel=\"stylesheet\"><link href=\"diagnostics/static/css/nucleo_icons.css\" rel=\"stylesheet\"><link href=\"/diagnostics/css/app....",
+      "success": true
+    },
+    {
+      "url": "http://192.168.102.232:5000/",
+      "status_code": 200,
+      "headers": {
+        "Server": "HTTP Server",
+        "Content-Type": "text/html",
+        "Cache-Control": "No-Cache",
+        "Content-Length": "1154"
+      },
+      "content_type": "text/html",
+      "content_length": 1154,
+      "content_preview": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1.5,user-scalable=1\"><link rel=\"icon\" href=\"/diagnostics/favicon.ico\"><title>XP Diagnostics</title><link href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" rel=\"stylesheet\"><link href=\"diagnostics/static/css/nucleo_icons.css\" rel=\"stylesheet\"><link href=\"/diagnostics/css/app....",
+      "success": true
+    },
+    {
+      "url": "http://192.168.102.232:5000/diagnostics",
+      "status_code": 404,
+      "headers": {
+        "Server": "HTTP Server",
+        "Content-Type": "text/html",
+        "Cache-Control": "No-Cache",
+        "Content-Length": "90",
+        "Access-Control-Allow-Origin": "http://192.168.102.232"
+      },
+      "content_type": "text/html",
+      "content_length": 90,
+      "content_preview": "<html><head><title>File not found</title></head><body>diagnostics not found.</body></html>",
+      "success": true
+    }
+  ]
+}

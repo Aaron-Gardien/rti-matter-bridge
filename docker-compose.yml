@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  matterbridge:
+    image: 42wim/matterbridge:latest
+    container_name: matterbridge
+    restart: unless-stopped
+    volumes:
+      - ./matterbridge.toml:/matterbridge.toml:ro
+    ports:
+      - "4242:4242"  # Matterbridge API port
+    networks:
+      - rti-matter
+    depends_on:
+      - matter-bridge
+
+  matter-bridge:
+    image: luligu/matterbridge:latest
+    container_name: matter-bridge
+    restart: unless-stopped
+    ports:
+      - "5540:5540"  # Matter bridge port
+    volumes:
+      - ./matter-bridge-data:/data
+    environment:
+      - MATTER_BRIDGE_PORT=5540
+      - MATTER_BRIDGE_LOG_LEVEL=info
+    networks:
+      - rti-matter
+    privileged: true  # Required for Matter bridge
+
+networks:
+  rti-matter:
+    driver: bridge
+

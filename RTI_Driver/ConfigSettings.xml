@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<category name="Debug Settings" description="Driver debug options" hidden="true">
+		<setting type="boolean" name="Enable Trace" variable="EnableTrace" description="Enable verbose debug output" />
+	</category>
+	
+	<category name="RTI Server Settings" description="RTI system connection settings">
+		<setting name="RTI Server Address" type="string" variable="RTIServerAddress" default="192.168.102.232" description="Enter the IP address of your RTI system" />
+		<setting name="RTI Server Port" type="integer" variable="RTIServerPort" default="1234" description="Enter the WebSocket port for RTI diagnostics" />
+		<setting name="WebSocket Endpoint" type="string" variable="WebSocketEndpoint" default="/diagnosticswss" description="WebSocket endpoint path" />
+	</category>
+	
+	<category name="Variable Discovery" description="System variable discovery settings">
+		<setting name="Start Variable ID" type="integer" variable="StartVariableID" default="1" description="Starting variable ID for discovery" />
+		<setting name="End Variable ID" type="integer" variable="EndVariableID" default="100" description="Ending variable ID for discovery" />
+		<setting name="Discovery Timeout" type="integer" variable="DiscoveryTimeout" default="3" description="Timeout in seconds for variable discovery" />
+	</category>
+	
+	<category name="Matterbridge Integration" description="Matterbridge communication settings">
+		<setting name="Enable Matterbridge" type="boolean" variable="MatterbridgeEnabled" default="true" description="Enable Matterbridge integration" />
+		<setting name="Matterbridge URL" type="string" variable="MatterbridgeURL" default="http://localhost:4242" description="Matterbridge server URL" />
+		<setting name="Matterbridge Token" type="string" variable="MatterbridgeToken" default="" description="Matterbridge authentication token" />
+		<setting name="Matterbridge Channel" type="string" variable="MatterbridgeChannel" default="rti-matter" description="Matterbridge channel for RTI communication" />
+	</category>
+	
+	<category name="HomeKit Integration" description="HomeKit bridge settings">
+		<setting name="HomeKit Bridge Name" type="string" variable="HomeKitBridgeName" default="RTI Bridge" description="Name for the HomeKit bridge" />
+		<setting name="HomeKit Port" type="integer" variable="HomeKitPort" default="51826" description="Port for HomeKit bridge" />
+		<setting name="Auto Discover Variables" type="boolean" variable="AutoDiscoverVariables" default="true" description="Automatically discover variables on startup" />
+	</category>
+</configuration>
+

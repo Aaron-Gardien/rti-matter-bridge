@@ -1,0 +1,5 @@
+websockets>=11.0.0
+pyhap>=4.0.0
+asyncio-mqtt>=0.11.0
+
+
