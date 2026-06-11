@@ -8,11 +8,14 @@
     "install-deps": "npm install"
   },
   "dependencies": {
-    "puppeteer": "^21.0.0"
+    "puppeteer": "^24.42.0"
   },
-  "keywords": ["rti", "homekit", "scraping", "diagnostics"],
+  "keywords": [
+    "rti",
+    "homekit",
+    "scraping",
+    "diagnostics"
+  ],
   "author": "",
   "license": "MIT"
 }
-
-

@@ -44,6 +44,24 @@ docker-compose up -d
 docker ps
 ```
 
+Open the Luligu Matterbridge web frontend at `http://localhost:8283` on the Docker host. The RTI API bridge remains on `http://localhost:4242`.
+
+On macOS Docker Desktop, do not start the Luligu Matterbridge container with `--network host`; Docker Desktop may show the container as healthy while publishing no browser-accessible ports. Recreate it with normal port publishing instead:
+
+```bash
+docker stop matterbridge
+docker rm matterbridge
+docker run --name matterbridge \
+  -p 8283:8283 \
+  -p 5540-5559:5540-5559/udp \
+  -v ~/matterbridge-data:/root/.matterbridge \
+  --restart unless-stopped \
+  -d luligu/matterbridge:latest \
+  matterbridge -docker
+```
+
+Then confirm `docker port matterbridge` includes `8283/tcp -> 0.0.0.0:8283` and open `http://localhost:8283`.
+
 ### Step 2: Configure RTI Driver
 1. Import `RTI_Driver/` into RTI Integration Designer
 2. Configure settings:
@@ -61,6 +79,8 @@ pip install websockets requests
 # Run the integration
 python3 rti_matterbridge_integration.py
 ```
+
+For activity switches with on/off macros and sysvar feedback, follow `RTI_SWITCH_PLUGIN_README.md` to generate `rti_switches.json`, then run the integration with `--switch-config rti_switches.json`.
 
 ## 🚀 RTI Boot Variables
 
@@ -103,6 +123,8 @@ Server="localhost:5540"
 Number="+1234567890"
 Password="your_matter_password"
 ```
+
+Docker publishes the Matterbridge frontend on TCP port `8283` and the Matter commissioning/device range on UDP ports `5540-5559`.
 
 ## 📊 Discovered Variables
 
