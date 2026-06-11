@@ -80,6 +80,8 @@ pip install websockets requests
 python3 rti_matterbridge_integration.py
 ```
 
+For activity switches with on/off macros and sysvar feedback, follow `RTI_SWITCH_PLUGIN_README.md` to generate `rti_switches.json`, then run the integration with `--switch-config rti_switches.json`.
+
 ## 🚀 RTI Boot Variables
 
 **Important**: RTI automatically sends all WebSocket variables when it boots up. This means:
