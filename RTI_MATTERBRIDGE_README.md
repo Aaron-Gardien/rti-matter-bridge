@@ -44,6 +44,8 @@ docker-compose up -d
 docker ps
 ```
 
+Open the Luligu Matterbridge web frontend at `http://localhost:8283` on the Docker host. The RTI API bridge remains on `http://localhost:4242`.
+
 ### Step 2: Configure RTI Driver
 1. Import `RTI_Driver/` into RTI Integration Designer
 2. Configure settings:
@@ -103,6 +105,8 @@ Server="localhost:5540"
 Number="+1234567890"
 Password="your_matter_password"
 ```
+
+Docker publishes the Matterbridge frontend on TCP port `8283` and the Matter commissioning/device range on UDP ports `5540-5559`.
 
 ## 📊 Discovered Variables
 
